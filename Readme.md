@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url] [![Dependency status][dependency-image]][dependency-url]
 
 * Студент: [Екатерина Елесова](https://up.htmlacademy.ru/javascript/7/user/139515).
-* Наставник: `Неизвестно`.
+* Наставник: [Павел Глушков](https://htmlacademy.ru/profile/id222222).
 
 ---
 
