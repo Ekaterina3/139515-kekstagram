@@ -119,6 +119,38 @@
           this._resizeConstraint.side - this._ctx.lineWidth / 2,
           this._resizeConstraint.side - this._ctx.lineWidth / 2);
 
+      // Отрисовка затемненной области
+
+      this._ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+
+      var coordinates = {
+        x1: (-this._container.width / 2),
+        y1: (-this._container.height / 2),
+        x2: ((-this._resizeConstraint.side / 2) - this._ctx.lineWidth),
+        y2: ((-this._resizeConstraint.side / 2) - this._ctx.lineWidth),
+        x3: (this._resizeConstraint.side / 2 - this._ctx.lineWidth / 2),
+        y3: (this._resizeConstraint.side / 2 - this._ctx.lineWidth / 2),
+        x4: (this._container.width / 2),
+        y4: (this._container.height / 2)
+      };
+
+      this._ctx.fillRect(coordinates.x1, coordinates.y1, coordinates.x4 - coordinates.x1, coordinates.y2 - coordinates.y1);
+      this._ctx.fillRect(coordinates.x1, coordinates.y3, coordinates.x4 - coordinates.x1, coordinates.y4 - coordinates.y3);
+      this._ctx.fillRect(coordinates.x1, coordinates.y2, coordinates.x2 - coordinates.x1, coordinates.y3 - coordinates.y2);
+      this._ctx.fillRect(coordinates.x3, coordinates.y2, coordinates.x4 - coordinates.x3, coordinates.y3 - coordinates.y2);
+
+
+      // Вывод размеров кадрируемого изображения
+
+      this._ctx.fillStyle = '#ffffff';
+      this._ctx.font = '12px Arial';
+      this._ctx.textAlign = 'center';
+      this._ctx.textBaseline = 'bottom';
+
+      var text = this._image.naturalWidth + ' x ' + this._image.naturalHeight;
+
+      this._ctx.fillText(text, 0, coordinates.y2);
+
       // Восстановление состояния канваса, которое было до вызова ctx.save
       // и последующего изменения системы координат. Нужно для того, чтобы
       // следующий кадр рисовался с привычной системой координат, где точка
