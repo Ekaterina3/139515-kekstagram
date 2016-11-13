@@ -1,4 +1,4 @@
-/* global Resizer: true */
+/* global Resizer: true  Cookies: true */
 
 /**
  * @fileoverview
@@ -254,7 +254,7 @@
 
     var daysNumber = Math.round((currentDate - GraceHopperBirthday) / (1000 * 60 * 60 * 24));
     return daysNumber;
-  }
+  };
 
   /**
    * Отправка формы фильтра. Возвращает в начальное состояние, предварительно
