@@ -80,18 +80,18 @@
     var leftSizeValue = +leftSize.value;
     var topSizeValue = +topSize.value;
     var sideSizeValue = +sideSize.value;
-    var disabledBtn;
+    var btnIActive;
 
     if ((leftSizeValue + sideSizeValue <= currentResizer._image.naturalWidth) && (topSizeValue + sideSizeValue <= currentResizer._image.naturalHeight) && (leftSizeValue >= 0) && (topSizeValue >= 0) && (sideSizeValue >= 0)) {
-      disabledBtn = false;
+      btnIActive = true;
     } else {
-      disabledBtn = true;
+      btnIActive = false;
     }
-    return disabledBtn;
+    return btnIActive;
   };
 
   var toggleResizeBtn = function() {
-    resizeBtn.disabled = resizeFormIsValid();
+    resizeBtn.disabled = !resizeFormIsValid();
   };
 
   leftSize.oninput = toggleResizeBtn;
