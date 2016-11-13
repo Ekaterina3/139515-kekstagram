@@ -242,11 +242,27 @@
     resizeForm.classList.remove('invisible');
   };
 
+  /* Количество дней со дня рождения Грейс Хоппер */
+
+  var cookiePeriod = function(currentDate) {
+    var currentYear = currentDate.getFullYear();
+    var GraceHopperBirthday = new Date(currentYear, 12, 9);
+
+    if (GraceHopperBirthday > currentDate) {
+      GraceHopperBirthday.setFullYear(currentYear - 1);
+    }
+
+    var daysNumber = Math.round((currentDate - GraceHopperBirthday) / (1000 * 60 * 60 * 24));
+    return daysNumber;
+  }
+
   /**
    * Отправка формы фильтра. Возвращает в начальное состояние, предварительно
    * записав сохраненный фильтр в cookie.
    * @param {Event} evt
    */
+  var currentFilter;
+
   filterForm.onsubmit = function(evt) {
     evt.preventDefault();
 
@@ -255,7 +271,11 @@
 
     filterForm.classList.add('invisible');
     uploadForm.classList.remove('invisible');
+
+    Cookies.set('upload-filter', currentFilter, { expires: cookiePeriod(new Date())});
   };
+
+  filterImage.className = 'filter-image-preview ' + Cookies.get('upload-filter');
 
   /**
    * Обработчик изменения фильтра. Добавляет класс из filterMap соответствующий
@@ -282,6 +302,7 @@
     // убрать предыдущий примененный класс. Для этого нужно или запоминать его
     // состояние или просто перезаписывать.
     filterImage.className = 'filter-image-preview ' + filterMap[selectedFilter];
+    currentFilter = filterMap[selectedFilter];
   };
 
   cleanupResizer();
