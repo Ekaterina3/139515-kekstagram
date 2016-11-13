@@ -77,9 +77,9 @@
   var resizeBtn = document.getElementById('resize-fwd');
 
   var resizeFormIsValid = function() {
-    var leftSizeValue = + leftSize.value;
-    var topSizeValue = + topSize.value;
-    var sideSizeValue = + sideSize.value;
+    var leftSizeValue = +leftSize.value;
+    var topSizeValue = +topSize.value;
+    var sideSizeValue = +sideSize.value;
     var disabledBtn;
 
     if ((leftSizeValue + sideSizeValue <= currentResizer._image.naturalWidth) && (topSizeValue + sideSizeValue <= currentResizer._image.naturalHeight) && (leftSizeValue >= 0) && (topSizeValue >= 0) && (sideSizeValue >= 0)) {
