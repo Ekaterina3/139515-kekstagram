@@ -71,9 +71,32 @@
    * Проверяет, валидны ли данные, в форме кадрирования.
    * @return {boolean}
    */
+  var leftSize = document.getElementById('resize-x');
+  var topSize = document.getElementById('resize-y');
+  var sideSize = document.getElementById('resize-size');
+  var resizeBtn = document.getElementById('resize-fwd');
+
   var resizeFormIsValid = function() {
-    return true;
+    var leftSizeValue = +leftSize.value;
+    var topSizeValue = +topSize.value;
+    var sideSizeValue = +sideSize.value;
+    var btnIActive;
+
+    if ((leftSizeValue + sideSizeValue <= currentResizer._image.naturalWidth) && (topSizeValue + sideSizeValue <= currentResizer._image.naturalHeight) && (leftSizeValue >= 0) && (topSizeValue >= 0) && (sideSizeValue >= 0)) {
+      btnIActive = true;
+    } else {
+      btnIActive = false;
+    }
+    return btnIActive;
   };
+
+  var toggleResizeBtn = function() {
+    resizeBtn.disabled = !resizeFormIsValid();
+  };
+
+  leftSize.oninput = toggleResizeBtn;
+  topSize.oninput = toggleResizeBtn;
+  sideSize.oninput = toggleResizeBtn;
 
   /**
    * Форма загрузки изображения.
