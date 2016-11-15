@@ -123,15 +123,19 @@
 
       this._ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
 
+      var containerWidthHalf = this._container.width / 2;
+      var containerHeightHalf = this._container.height / 2;
+      var resizeSideHalf = this._resizeConstraint.side / 2;
+
       var coordinates = {
-        x1: (-this._container.width / 2),
-        y1: (-this._container.height / 2),
-        x2: ((-this._resizeConstraint.side / 2) - this._ctx.lineWidth),
-        y2: ((-this._resizeConstraint.side / 2) - this._ctx.lineWidth),
-        x3: (this._resizeConstraint.side / 2 - this._ctx.lineWidth / 2),
-        y3: (this._resizeConstraint.side / 2 - this._ctx.lineWidth / 2),
-        x4: (this._container.width / 2),
-        y4: (this._container.height / 2)
+        x1: (-containerWidthHalf),
+        y1: (-containerHeightHalf),
+        x2: (-resizeSideHalf - this._ctx.lineWidth),
+        y2: (-resizeSideHalf - this._ctx.lineWidth),
+        x3: (resizeSideHalf - this._ctx.lineWidth / 2),
+        y3: (resizeSideHalf - this._ctx.lineWidth / 2),
+        x4: (containerWidthHalf),
+        y4: (containerHeightHalf)
       };
 
       this._ctx.fillRect(coordinates.x1, coordinates.y1, coordinates.x4 - coordinates.x1, coordinates.y2 - coordinates.y1);

@@ -14,7 +14,7 @@ var PICTURES_LOAD_URL = 'http://localhost:1507/api/pictures?callback=JSONPCallba
 var load = function(url, callback) {
   window.JSONPCallback = function(data) {
     callback(data);
-  }
+  };
 
   var script = document.createElement('script');
   script.src = url;
@@ -28,7 +28,7 @@ var getPictureElement = function(image) {
 
   var pictureImage = new Image();
 
-  pictureImage.onload = function(evt) {
+  pictureImage.onload = function() {
     clearTimeout(loadingTimeout);
 
     var img = pictureElement.querySelector('img');
