@@ -82,7 +82,11 @@
     var sideSizeValue = +sideSize.value;
     var btnIActive;
 
-    if ((leftSizeValue + sideSizeValue <= currentResizer._image.naturalWidth) && (topSizeValue + sideSizeValue <= currentResizer._image.naturalHeight) && (leftSizeValue >= 0) && (topSizeValue >= 0) && (sideSizeValue >= 0)) {
+    var isLeftValid = (leftSizeValue + sideSizeValue <= currentResizer._image.naturalWidth) && (leftSizeValue >= 0);
+    var isTopValid = (topSizeValue + sideSizeValue <= currentResizer._image.naturalHeight) && (topSizeValue >= 0);
+    var isSideValid = sideSizeValue >= 0;
+
+    if (isLeftValid && isTopValid && isSideValid) {
       btnIActive = true;
     } else {
       btnIActive = false;
